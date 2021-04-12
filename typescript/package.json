@@ -1,0 +1,17 @@
+{
+  "name": "retrospective-programming-lab-typescript",
+  "private": true,
+  "type": "module",
+  "description": "TypeScript exercises; Node runs them directly, these dev dependencies only type-check them",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "tsc -p ."
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "typescript": "^5.9.3"
+  }
+}
