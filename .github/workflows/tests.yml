@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Exercise tests, type-check, provenance check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the provenance check reads the whole history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Exercise tests (Python and TypeScript)
+        run: ./scripts/test-all.sh
+      - name: Type-check the TypeScript exercises
+        working-directory: typescript
+        run: |
+          npm ci
+          npm run typecheck
+      - name: Provenance manifest matches the history
+        run: python3 simulation/verify.py

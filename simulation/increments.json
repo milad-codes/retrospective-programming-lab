@@ -1,0 +1,401 @@
+[
+  {
+    "id": "start",
+    "message": "Start the retrospective collection: README with the simulation disclosure, licence, test runner",
+    "files": [
+      "README.md",
+      "LICENSE",
+      ".gitignore",
+      "scripts/test-all.sh",
+      "simulation/README.md"
+    ]
+  },
+  {
+    "id": "nt-gcd",
+    "message": "number theory: Euclid's gcd, lcm, extended gcd and modular inverse",
+    "files": [
+      "python/number_theory/__init__.py",
+      "python/number_theory/gcd.py",
+      "python/number_theory/test_gcd.py"
+    ]
+  },
+  {
+    "id": "nt-sieve",
+    "message": "number theory: sieve of Eratosthenes and prime factorisation",
+    "files": [
+      "python/number_theory/sieve.py",
+      "python/number_theory/test_sieve.py"
+    ]
+  },
+  {
+    "id": "nt-modpow",
+    "message": "number theory: modular exponentiation by repeated squaring",
+    "files": [
+      "python/number_theory/modpow.py",
+      "python/number_theory/test_modpow.py"
+    ]
+  },
+  {
+    "id": "nt-primes",
+    "message": "number theory: deterministic Miller-Rabin primality test",
+    "files": [
+      "python/number_theory/primes.py",
+      "python/number_theory/test_primes.py"
+    ]
+  },
+  {
+    "id": "nt-readme",
+    "message": "number theory: README with costs and how the tests check results",
+    "files": [
+      "python/number_theory/README.md"
+    ]
+  },
+  {
+    "id": "sort-insertion",
+    "message": "sorting: stable insertion sort with a key function",
+    "files": [
+      "python/sorting/__init__.py",
+      "python/sorting/insertion.py",
+      "python/sorting/test_insertion.py"
+    ]
+  },
+  {
+    "id": "sort-merge",
+    "message": "sorting: merge sort, stable on ties",
+    "files": [
+      "python/sorting/merge.py",
+      "python/sorting/test_merge.py"
+    ]
+  },
+  {
+    "id": "sort-quick",
+    "message": "sorting: quicksort with random pivot, three-way partition and bounded recursion",
+    "files": [
+      "python/sorting/quick.py",
+      "python/sorting/test_quick.py"
+    ]
+  },
+  {
+    "id": "sort-heap",
+    "message": "sorting: heapsort with bottom-up heap construction",
+    "files": [
+      "python/sorting/heap.py",
+      "python/sorting/test_heap.py"
+    ]
+  },
+  {
+    "id": "sort-readme",
+    "message": "sorting: README comparing the four algorithms",
+    "files": [
+      "python/sorting/README.md"
+    ]
+  },
+  {
+    "id": "ll-list",
+    "message": "linked structures: singly linked list with tail pointer and in-place reverse",
+    "files": [
+      "python/linked_structures/__init__.py",
+      "python/linked_structures/linked_list.py",
+      "python/linked_structures/test_linked_list.py"
+    ]
+  },
+  {
+    "id": "ll-stack-queue",
+    "message": "linked structures: stack, two-stack queue and bracket matching",
+    "files": [
+      "python/linked_structures/stack_queue.py",
+      "python/linked_structures/test_stack_queue.py"
+    ]
+  },
+  {
+    "id": "ll-lru",
+    "message": "linked structures: O(1) LRU cache checked against an OrderedDict model",
+    "files": [
+      "python/linked_structures/lru_cache.py",
+      "python/linked_structures/test_lru_cache.py"
+    ]
+  },
+  {
+    "id": "ll-readme",
+    "message": "linked structures: README",
+    "files": [
+      "python/linked_structures/README.md"
+    ]
+  },
+  {
+    "id": "tt-words",
+    "message": "text tools: Unicode-aware word counter with a command-line interface",
+    "files": [
+      "python/text_tools/__init__.py",
+      "python/text_tools/word_count.py",
+      "python/text_tools/test_word_count.py"
+    ]
+  },
+  {
+    "id": "tt-ciphers",
+    "message": "text tools: Caesar and Vigenere ciphers and a frequency-based Caesar breaker",
+    "files": [
+      "python/text_tools/ciphers.py",
+      "python/text_tools/test_ciphers.py"
+    ]
+  },
+  {
+    "id": "tt-rle",
+    "message": "text tools: run-length encoding with input validation",
+    "files": [
+      "python/text_tools/rle.py",
+      "python/text_tools/test_rle.py"
+    ]
+  },
+  {
+    "id": "tt-readme",
+    "message": "text tools: README",
+    "files": [
+      "python/text_tools/README.md"
+    ]
+  },
+  {
+    "id": "g-traversal",
+    "message": "graphs: BFS shortest path, iterative DFS and connected components",
+    "files": [
+      "python/graphs/__init__.py",
+      "python/graphs/traversal.py",
+      "python/graphs/test_traversal.py"
+    ]
+  },
+  {
+    "id": "g-dijkstra",
+    "message": "graphs: Dijkstra with a binary heap, checked against brute force",
+    "files": [
+      "python/graphs/dijkstra.py",
+      "python/graphs/test_dijkstra.py"
+    ]
+  },
+  {
+    "id": "g-topo",
+    "message": "graphs: Kahn's topological sort that names the nodes on a cycle",
+    "files": [
+      "python/graphs/topo.py",
+      "python/graphs/test_topo.py"
+    ]
+  },
+  {
+    "id": "g-mst",
+    "message": "graphs: Kruskal's minimum spanning tree with union-find",
+    "files": [
+      "python/graphs/mst.py",
+      "python/graphs/test_mst.py"
+    ]
+  },
+  {
+    "id": "g-readme",
+    "message": "graphs: README",
+    "files": [
+      "python/graphs/README.md"
+    ]
+  },
+  {
+    "id": "dp-edit",
+    "message": "dynamic programming: edit distance and the edit script",
+    "files": [
+      "python/dynamic_programming/__init__.py",
+      "python/dynamic_programming/edit_distance.py",
+      "python/dynamic_programming/test_edit_distance.py"
+    ]
+  },
+  {
+    "id": "dp-lcs",
+    "message": "dynamic programming: longest common subsequence",
+    "files": [
+      "python/dynamic_programming/lcs.py",
+      "python/dynamic_programming/test_lcs.py"
+    ]
+  },
+  {
+    "id": "dp-knapsack",
+    "message": "dynamic programming: 0/1 knapsack with item reconstruction",
+    "files": [
+      "python/dynamic_programming/knapsack.py",
+      "python/dynamic_programming/test_knapsack.py"
+    ]
+  },
+  {
+    "id": "dp-coins",
+    "message": "dynamic programming: fewest coins and number of ways to pay",
+    "files": [
+      "python/dynamic_programming/coin_change.py",
+      "python/dynamic_programming/test_coin_change.py"
+    ]
+  },
+  {
+    "id": "dp-readme",
+    "message": "dynamic programming: README",
+    "files": [
+      "python/dynamic_programming/README.md"
+    ]
+  },
+  {
+    "id": "sql-schema",
+    "message": "library in SQL: schema with foreign keys, checks and a partial index",
+    "files": [
+      "python/library_sql/__init__.py",
+      "python/library_sql/schema.sql"
+    ]
+  },
+  {
+    "id": "sql-queries",
+    "message": "library in SQL: race-free borrowing and window-function reports",
+    "files": [
+      "python/library_sql/queries.py",
+      "python/library_sql/test_queries.py"
+    ]
+  },
+  {
+    "id": "sql-readme",
+    "message": "library in SQL: README",
+    "files": [
+      "python/library_sql/README.md"
+    ]
+  },
+  {
+    "id": "cpu-sim",
+    "message": "scheduling: CPU scheduling simulator with FCFS, SJF, SRTF, priority and round robin",
+    "files": [
+      "python/scheduling/__init__.py",
+      "python/scheduling/scheduler.py",
+      "python/scheduling/test_scheduler.py"
+    ]
+  },
+  {
+    "id": "cpu-readme",
+    "message": "scheduling: README",
+    "files": [
+      "python/scheduling/README.md"
+    ]
+  },
+  {
+    "id": "ts-setup",
+    "message": "typescript: type-checking setup (Node runs the exercises directly)",
+    "files": [
+      "typescript/package.json",
+      "typescript/package-lock.json",
+      "typescript/tsconfig.json"
+    ]
+  },
+  {
+    "id": "expr-lexer",
+    "message": "expression evaluator: tokenizer with source positions",
+    "files": [
+      "typescript/expression-evaluator/lexer.ts",
+      "typescript/expression-evaluator/lexer.test.ts"
+    ]
+  },
+  {
+    "id": "expr-parser",
+    "message": "expression evaluator: Pratt parser, evaluator and minimal-parentheses printer",
+    "files": [
+      "typescript/expression-evaluator/parser.ts",
+      "typescript/expression-evaluator/evaluate.ts",
+      "typescript/expression-evaluator/parser.test.ts"
+    ]
+  },
+  {
+    "id": "expr-readme",
+    "message": "expression evaluator: README",
+    "files": [
+      "typescript/expression-evaluator/README.md"
+    ]
+  },
+  {
+    "id": "json-parser",
+    "message": "json parser: RFC 8259 recursive-descent parser with line and column errors",
+    "files": [
+      "typescript/json-parser/parser.ts",
+      "typescript/json-parser/parser.test.ts"
+    ]
+  },
+  {
+    "id": "json-readme",
+    "message": "json parser: README",
+    "files": [
+      "typescript/json-parser/README.md"
+    ]
+  },
+  {
+    "id": "async-pool",
+    "message": "async utils: concurrency-limited map that keeps input order",
+    "files": [
+      "typescript/async-utils/pool.ts",
+      "typescript/async-utils/pool.test.ts"
+    ]
+  },
+  {
+    "id": "async-retry",
+    "message": "async utils: retry with exponential backoff and full jitter",
+    "files": [
+      "typescript/async-utils/retry.ts",
+      "typescript/async-utils/retry.test.ts"
+    ]
+  },
+  {
+    "id": "async-debounce",
+    "message": "async utils: debounce and throttle tested with mock timers",
+    "files": [
+      "typescript/async-utils/debounce.ts",
+      "typescript/async-utils/debounce.test.ts"
+    ]
+  },
+  {
+    "id": "async-readme",
+    "message": "async utils: README",
+    "files": [
+      "typescript/async-utils/README.md"
+    ]
+  },
+  {
+    "id": "rl-bucket",
+    "message": "rate limiter: token bucket with lazy refill",
+    "files": [
+      "typescript/rate-limiter/token-bucket.ts",
+      "typescript/rate-limiter/token-bucket.test.ts"
+    ]
+  },
+  {
+    "id": "rl-window",
+    "message": "rate limiter: sliding-window log with per-key pruning",
+    "files": [
+      "typescript/rate-limiter/sliding-window.ts",
+      "typescript/rate-limiter/sliding-window.test.ts"
+    ]
+  },
+  {
+    "id": "rl-readme",
+    "message": "rate limiter: README",
+    "files": [
+      "typescript/rate-limiter/README.md"
+    ]
+  },
+  {
+    "id": "http-router",
+    "message": "http router: path parameters, 404 vs 405, HEAD and middleware",
+    "files": [
+      "typescript/http-router/router.ts",
+      "typescript/http-router/router.test.ts"
+    ]
+  },
+  {
+    "id": "http-server",
+    "message": "http router: node:http adapter with JSON bodies and safe errors",
+    "files": [
+      "typescript/http-router/server.ts",
+      "typescript/http-router/server.test.ts"
+    ]
+  },
+  {
+    "id": "http-readme",
+    "message": "http router: README",
+    "files": [
+      "typescript/http-router/README.md"
+    ]
+  }
+]
