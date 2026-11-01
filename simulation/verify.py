@@ -10,6 +10,7 @@ and never touch simulation/records/. It prints the range of real committer dates
 
 from __future__ import annotations
 
+import datetime as dt
 import json
 import os
 import subprocess
@@ -19,6 +20,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 RECORDS = "simulation/records/"
 SHOWN = 20  # problems printed in full; the rest are counted
+
+
+def instant(text: str) -> dt.datetime:
+    """Parses an ISO 8601 date. Recent git versions print UTC as "Z" in %aI, older ones as "+00:00"."""
+    return dt.datetime.fromisoformat(text[:-1] + "+00:00" if text.endswith("Z") else text)
 
 
 def git(*args: str) -> str:
@@ -62,7 +68,7 @@ def main() -> int:
             problems.append(f"{where}: not in the history")
             continue
         author_date, _, changed = commits[entry["commit"]]
-        if author_date != entry["assignedAuthorDate"]:
+        if instant(author_date) != instant(entry["assignedAuthorDate"]):
             problems.append(f"{where}: author date {author_date}, manifest says {entry['assignedAuthorDate']}")
         if entry["kind"] == "record":
             if changed != entry["files"] or not all(name.startswith(RECORDS) for name in changed):
@@ -73,10 +79,11 @@ def main() -> int:
     if problems:
         print(f"{len(problems)} problem(s) in {len(entries)} manifest entries")
         return 1
-    committed = sorted(commits[e["commit"]][1] for e in entries)
+    committed = sorted(instant(commits[e["commit"]][1]).astimezone(dt.timezone.utc) for e in entries)
     kinds = {kind: sum(1 for e in entries if e["kind"] == kind) for kind in ("increment", "record")}
     print(f"{len(entries)} manifest entries match the history: {kinds['increment']} substantive increments, "
-          f"{kinds['record']} simulation records. Real committer dates: {committed[0]} to {committed[-1]}.")
+          f"{kinds['record']} simulation records. Real committer dates: {committed[0]:%Y-%m-%d %H:%M:%S} to "
+          f"{committed[-1]:%Y-%m-%d %H:%M:%S} UTC.")
     return 0
 
 

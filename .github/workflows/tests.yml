@@ -30,4 +30,6 @@ jobs:
           npm ci
           npm run typecheck
       - name: Provenance manifest matches the history
-        run: python3 simulation/verify.py
+        run: |
+          python3 -m unittest discover -s simulation -p 'test_*.py'
+          python3 simulation/verify.py
