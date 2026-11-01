@@ -11,20 +11,35 @@ and never touch simulation/records/. It prints the range of real committer dates
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 RECORDS = "simulation/records/"
+SHOWN = 20  # problems printed in full; the rest are counted
+
+
+def git(*args: str) -> str:
+    return subprocess.run(["git", "-C", str(ROOT), *args], check=True, capture_output=True, text=True).stdout
+
+
+def report(problems: list[str]) -> None:
+    """Prints the first problems, and in GitHub Actions also turns them into error annotations."""
+    for problem in problems[:SHOWN]:
+        print(problem)
+    if len(problems) > SHOWN:
+        print(f"... and {len(problems) - SHOWN} more")
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        for problem in problems[:10]:
+            text = problem.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+            print(f"::error title=Provenance check::{text}")
 
 
 def history() -> dict[str, tuple[str, str, list[str]]]:
     """Maps each commit hash to its author date, committer date and changed files."""
-    out = subprocess.run(
-        ["git", "-C", str(ROOT), "log", "--no-renames", "--name-only", "--format=%x00%H %aI %cI"],
-        check=True, capture_output=True, text=True,
-    ).stdout
+    out = git("log", "--no-renames", "--name-only", "--format=%x00%H %aI %cI")
     commits = {}
     for chunk in out.split("\0")[1:]:
         header, _, names = chunk.partition("\n")
@@ -34,8 +49,12 @@ def history() -> dict[str, tuple[str, str, list[str]]]:
 
 
 def main() -> int:
+    if git("rev-parse", "--is-shallow-repository").strip() == "true":
+        report(["the clone is shallow: fetch the whole history first (actions/checkout: fetch-depth: 0)"])
+        return 1
     entries = [json.loads(line) for line in (ROOT / "simulation" / "provenance.jsonl").read_text().splitlines()]
     commits = history()
+    print(f"{git('--version').strip()}; {len(commits)} commits in the history, {len(entries)} manifest entries")
     problems = []
     for entry in entries:
         where = f"seq {entry['seq']} ({entry['commit'][:12]})"
@@ -50,8 +69,7 @@ def main() -> int:
                 problems.append(f"{where}: a simulation record changed {changed}")
         elif any(name.startswith(RECORDS) for name in changed) or not set(changed) <= set(entry["files"]):
             problems.append(f"{where}: an increment changed {changed}")
-    for problem in problems:
-        print(problem)
+    report(problems)
     if problems:
         print(f"{len(problems)} problem(s) in {len(entries)} manifest entries")
         return 1
